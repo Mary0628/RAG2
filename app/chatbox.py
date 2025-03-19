@@ -31,7 +31,18 @@ os.makedirs(CHROMA_PATH, exist_ok=True)
 PASSWORD = "123456"
 
 # 配置新增
-FEEDBACK_PATH = r"feedback_data"
+# FEEDBACK_PATH = r"feedback_data"
+
+FEEDBACK_PATH = os.path.join(tempfile.gettempdir(), "feedback_data")
+  try:
+      os.makedirs(FEEDBACK_PATH, exist_ok=True)
+      os.chmod(FEEDBACK_PATH, 0o777)  # 显式设置权限
+  except Exception as e:
+      print(f"Path creation failed: {str(e)}")
+      raise
+
+
+
 CSV_FILE = Path(FEEDBACK_PATH) / "feedback.csv"
 
 # 设置本地存储
@@ -94,9 +105,14 @@ def handle_feedback(feedback_type, history):
 
 
 
+# embeddings_model = HuggingFaceEmbeddings(
+#     #model_name="./models/all-MiniLM-L6-v2"
+#     model_name = "sentence-transformers/all-MiniLM-L6-v2"
+# )
 embeddings_model = HuggingFaceEmbeddings(
-    #model_name="./models/all-MiniLM-L6-v2"
-    model_name = "sentence-transformers/all-MiniLM-L6-v2"
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
+    model_kwargs={'device': 'cpu'},  # 强制使用CPU
+    encode_kwargs={'normalize_embeddings': False}  # 减少计算量
 )
 
 
