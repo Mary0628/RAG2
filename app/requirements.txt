@@ -1,10 +1,9 @@
-langchain-openai
-gradio>=4.0
-python-dotenv
-chromadb
-huggingface-hub
-sentence-transformers
-langchain-community
-pypdf
-openai
-python-multipart
+langchain-openai==0.0.8
+langchain-chroma==0.1.0
+langchain-community==0.0.27
+sentence-transformers==2.2.2
+huggingface-hub==0.19.4
+python-dotenv==1.0.0
+gradio==4.12.0
+pypdf==3.17.0
+psycopg2-binary==2.9.9  # 新增PostgreSQL依赖
