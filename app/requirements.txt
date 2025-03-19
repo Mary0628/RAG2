@@ -1,0 +1,10 @@
+langchain-openai
+gradio>=4.0
+python-dotenv
+chromadb
+huggingface-hub
+sentence-transformers
+langchain-community
+pypdf
+openai
+python-multipart
