@@ -1,8 +1,3 @@
-# 在Railway项目设置中：
-- 当前内存：512MB ➔ 
-+ 调整为：1024MB 或 2048MB
-
-# 添加swapfile配置（railway.json）：
 {
   "builds": [
     {
